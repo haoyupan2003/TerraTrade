@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farms and Listings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <span>T</span>
+            <span>e</span>
+            <span>r</span>
+            <span>r</span>
+            <span>a</span>
+            <span>&nbsp;</span>
+            <span>T</span>
+            <span>r</span>
+            <span>a</span>
+            <span>d</span>
+            <span>e</span>
+            <span>r</span>
+            <span>s</span>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('views.home') }}">Home</a></li>
+            <li><a href="{{ url_for('views.listing') }}">Listings</a></li>
+            <li><a href="{{ url_for('views.contact') }}">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section class="listings">
+            <h1>Farms and Listings</h1>
+            {% if farms %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Farm ID</th>
+                        <th>Location</th>
+                        <th>Size</th>
+                        <th>Listing ID</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for farm, listing in farms %}
+                    <tr>
+                        <td>{{ farm.farm_id }}</td>
+                        <td>{{ farm.location }}</td>
+                        <td>{{ farm.size }}</td>
+                        <td>{{ listing.listing_id }}</td>
+                        <td>${{ listing.price }}</td>
+                        <td>{{ listing.quantity }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No farms and listings available at the moment.</p>
+            {% endif %}
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Soil Market. All rights reserved.</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+
+</html>

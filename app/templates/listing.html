@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil Listings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles2.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="logo">Terra Traders</div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('views.home') }}">Home</a></li>
+            <li><a href="{{ url_for('views.listing') }}">Listings</a></li>
+            <li><a href="{{ url_for('views.contact') }}">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section class="filter-section">
+            <h2>Filter Listings</h2>
+            <form action="{{ url_for('views.listing') }}" method="POST">
+                <label for="min_price">Min Price:</label>
+                <input type="number" id="min_price" name="min_price" step="0.01"><br><br>
+
+                <label for="max_price">Max Price:</label>
+                <input type="number" id="max_price" name="max_price" step="0.01"><br><br>
+
+                <label for="min_quantity">Min Quantity:</label>
+                <input type="number" id="min_quantity" name="min_quantity"><br><br>
+
+                <label for="max_quantity">Max Quantity:</label>
+                <input type="number" id="max_quantity" name="max_quantity"><br><br>
+
+                <button type="submit">Apply Filters</button>
+                <a href="{{ url_for('views.listing') }}" class="reset-button">Reset Filters</a>
+            </form>
+        </section>
+        <section class="listings">
+            <h1>Available Soil Listings</h1>
+            {% if listings %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Listing ID</th>
+                        <th>User ID</th>
+                        <th>Soil ID</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for listing in listings %}
+                    <tr>
+                        <td>{{ listing.listing_id }}</td>
+                        <td>{{ listing.user_id }}</td>
+                        <td>{{ listing.soil_id }}</td>
+                        <td>${{ listing.price }}</td>
+                        <td>{{ listing.quantity }}</td>
+                        <td>{{ listing.date }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No listings available with the applied filters.</p>
+            {% endif %}
+        </section>
+        <section class="pagination">
+            <ul>
+                {% if pagination.has_prev %}
+                <li><a href="{{ url_for('views.listing', page=pagination.prev_num) }}">Previous</a></li>
+                {% endif %}
+                <li>Page {{ pagination.page }} of {{ pagination.pages }}</li>
+                {% if pagination.has_next %}
+                <li><a href="{{ url_for('views.listing', page=pagination.next_num) }}">Next</a></li>
+                {% endif %}
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Soil Market. All rights reserved.</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+
+</html>

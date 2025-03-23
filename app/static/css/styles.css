@@ -1,0 +1,350 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    background: #754022;
+    color: #fff;
+    padding: 1rem;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #4CAF50;
+    /* Green background for the nav */
+    width: 100%;
+    /* Full-width background */
+    padding: 3px 0;
+    /* Vertical padding */
+    box-sizing: border-box;
+    /* Ensures padding is included in width */
+}
+
+nav ul {
+    list-style-type: none;
+    /* Removes bullet points */
+    display: flex;
+    /* Aligns list items horizontally */
+    justify-content: left;
+    /* Centers links horizontally */
+    padding: 0;
+    /* Removes default padding */
+    margin: 0;
+    /* Removes default margin */
+}
+
+nav ul li {
+    margin: 0 0px;
+    /* Adds space between the links */
+}
+
+nav a {
+    text-decoration: none;
+    /* Removes the underline */
+    color: white;
+    /* Text color */
+    font-size: 1.2em;
+    /* Adjust font size */
+    padding: 10px 20px;
+    /* Adds padding to the links */
+    display: block;
+    /* Makes the link fill the space inside the list item */
+    transition: background-color 0.3s ease;
+    /* Smooth transition for hover effect */
+}
+
+nav a:hover {
+    background-color: #45a049;
+    /* Darker green on hover */
+}
+
+footer {
+    position: fixed;
+    /* Keeps it at the bottom of the viewport */
+    bottom: 0;
+    /* Aligns it to the bottom */
+    width: 100%;
+    /* Ensures it spans the full width */
+    text-align: center;
+    /* Centers the text horizontally */
+    background-color: #f5f5f5;
+    /* Optional: Background color for the footer */
+    padding: 10px 0;
+    /* Adds vertical spacing */
+    font-size: 1.2em;
+    /* Adjust font size */
+    color: #333;
+    /* Text color */
+    border-top: 1px solid #ddd;
+    /* Optional: Adds a top border */
+}
+
+/* Style for Links */
+a {
+    text-decoration: none;
+    /* Removes underline */
+    padding: 10px 15px;
+    /* Adds space around the link */
+    color: white;
+    /* Text color */
+    background-color: #4CAF50;
+    /* Default background color */
+    border-radius: 5px;
+    /* Rounded corners */
+    transition: background-color 0.3s ease;
+    /* Smooth transition for hover effect */
+}
+
+a:hover {
+    background-color: #45a049;
+    /* Darker green when hovered */
+}
+
+
+.hero {
+    background: #f4f4f4;
+    padding: 2rem;
+    text-align: center;
+}
+
+.hero1 {
+    background: #f4f4f4;
+    padding: 2rem;
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #28a745;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.listing-card {
+    border: 1px solid #ddd;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+/* Style for the Logo */
+.logo {
+    font-size: 3em;
+    /* Large text size */
+    font-weight: bold;
+    /* Bold text */
+    color: #333;
+    /* Default color */
+    display: flex;
+    /* Flexbox for horizontal layout */
+    justify-content: center;
+    /* Centers the logo horizontally */
+    align-items: center;
+    /* Vertically centers the logo */
+    letter-spacing: 2px;
+    /* Reduces the space between letters */
+    margin: 10px 0;
+    /* Adds some vertical spacing above and below */
+}
+
+.logo span {
+    display: inline-block;
+    /* Makes each letter its own block */
+    transition: transform 0.2s ease, color 0.2s ease;
+    /* Smooth transition for hover effect */
+}
+
+.logo:hover span {
+    color: #4CAF50;
+    /* Change color of all letters to green when hovered */
+    transform: scale(1.1);
+    /* Slightly grow all letters */
+}
+
+.logo span:hover {
+    transform: scale(1.5);
+    /* Grow the hovered letter more */
+}
+
+
+/* About Us Section */
+.about-us {
+    background-color: #f9f9f9;
+    /* Light background */
+    padding: 2rem;
+    text-align: center;
+}
+
+.about-us h2 {
+    font-size: 2.5em;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.about-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.about-text {
+    max-width: 600px;
+    text-align: left;
+}
+
+.about-text h3 {
+    font-size: 2em;
+    margin-bottom: 1rem;
+    color: #4CAF50;
+}
+
+.about-text p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #555;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-image img {
+        width: 80%;
+    }
+}
+
+/* Sticky Navigation */
+.sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #287a2f;
+    width: 100%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sticky-nav ul {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.sticky-nav ul li {
+    margin: 0 20px;
+}
+
+.sticky-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+.sticky-nav a:hover {
+    background-color: #45a049;
+}
+
+/* Team Section */
+.team {
+    padding: 2rem;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+.team h2 {
+    font-size: 2.5em;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+/* Team Member Section */
+.team-member-section {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.team-member {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.team-member.left .member-info {
+    order: 1;
+}
+
+.team-member.right .member-info {
+    order: 2;
+}
+
+.team-member img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.member-info {
+    max-width: 500px;
+    text-align: left;
+}
+
+.member-info h3 {
+    font-size: 1.8em;
+    margin-bottom: 1rem;
+}
+
+.member-info p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+.member-info p:first-child {
+    font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .team-member {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team-member img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .member-info {
+        text-align: center;
+    }
+}

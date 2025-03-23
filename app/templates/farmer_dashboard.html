@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <header>
+        <h1>Welcome, {{ session['user_name'] }}!</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Your Listings</h2>
+            {% if listings %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Listing ID</th>
+                        <th>Soil ID</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for listing in listings %}
+                    <tr>
+                        <td>{{ listing.listing_id }}</td>
+                        <td>{{ listing.soil_id }}</td>
+                        <td>${{ listing.price }}</td>
+                        <td>{{ listing.quantity }}</td>
+                        <td>{{ listing.date }}</td>
+                        <td>
+                            <form action="{{ url_for('views.manage_listings') }}" method="POST" style="display:inline;">
+                                <input type="hidden" name="listing_id" value="{{ listing.listing_id }}">
+                                <button type="submit" name="action" value="delete">Delete</button>
+                            </form>
+                            <form action="{{ url_for('views.manage_listings') }}" method="POST" style="display:inline;">
+                                <input type="hidden" name="listing_id" value="{{ listing.listing_id }}">
+                                <button type="submit" name="action" value="edit">Edit</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No listings found. Add a new listing below.</p>
+            {% endif %}
+        </section>
+
+        <section>
+            <h2>Add New Listing</h2>
+            <a href="{{ url_for('views.add_listing') }}">Add New Listing</a>
+        </section>
+    </main>
+</body>
+
+</html>

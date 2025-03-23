@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <span>T</span>
+            <span>e</span>
+            <span>r</span>
+            <span>r</span>
+            <span>a</span>
+            <span>&nbsp;</span>
+            <span>T</span>
+            <span>r</span>
+            <span>a</span>
+            <span>d</span>
+            <span>e</span>
+            <span>r</span>
+            <span>s</span>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('views.home') }}">Home</a></li>
+            <li><a href="{{ url_for('views.listing') }}">Listings</a></li>
+            <li><a href="{{ url_for('views.contact') }}">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section class="form-section">
+            <h2>Sign Up</h2>
+            <form method="POST" action="{{ url_for('views.signup') }}">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br><br>
+
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br><br>
+
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" required><br><br>
+
+                <label for="address">Address:</label><br>
+                <input type="text" id="address" name="address" required><br><br>
+
+                <label for="phone_number">Phone Number:</label><br>
+                <input type="text" id="phone_number" name="phone_number" required><br><br>
+
+                <label for="role">Role:</label><br>
+                <select id="role" name="role" required>
+                    <option value="user">User</option>
+                    <option value="farmer">Farmer</option>
+                    <option value="admin">Admin</option>
+                </select><br><br>
+
+                <button type="submit">Sign Up</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Soil Market. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

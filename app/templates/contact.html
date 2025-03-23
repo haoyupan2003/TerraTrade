@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Owner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <header>
+        <h1>Contact Owner</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Owner Information</h2>
+            <p>Name: {{ owner.name }}</p>
+            <p>Phone: {{ owner.phone_number }}</p>
+            <p>Email: <a href="mailto:{{ owner.email }}">{{ owner.email }}</a></p>
+            <p>Location: {{ owner.location }}</p>
+        </section>
+    </main>
+</body>
+
+</html>

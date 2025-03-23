@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="logo">Terra Traders</div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('views.home') }}">Home</a></li>
+            <li><a href="{{ url_for('views.signup') }}">Signup</a></li>
+            <li><a href="{{ url_for('views.login') }}">Login</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section class="login-section">
+            <h1>Login</h1>
+            <form action="{{ url_for('views.login') }}" method="POST">
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br><br>
+
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" required><br><br>
+
+                <button type="submit">Login</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Soil Market. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

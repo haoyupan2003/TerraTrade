@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protected Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles2.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="logo">Terra Traders</div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('views.home') }}">Home</a></li>
+            <li><a href="{{ url_for('views.logout') }}">Logout</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <h1>Welcome to the Protected Page!</h1>
+            <p>Hello, {{ session.get('user_name', 'User') }}. You are logged in, so you can access this page.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Soil Market. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

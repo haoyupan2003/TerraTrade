@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <header>
+        <h1>Welcome, {{ session['user_name'] }}!</h1>
+    </header>
+
+    <main>
+        <!-- Listings by Farms -->
+        <section>
+            <h2>View Listings by Farms</h2>
+            <ul>
+                {% for farm in farms %}
+                <li>
+                    Farm ID: {{ farm.farm_id }} | Location: {{ farm.location }}
+                    <ul>
+                        {% for listing in listings if listing.listing_id == farm.listing_id %}
+                        <li>
+                            Listing ID: {{ listing.listing_id }} | Soil ID: {{ listing.soil_id }} | Price: ${{
+                            listing.price }}
+                            {% if farm.owner_id %}
+                            <a href="{{ url_for('views.contact_owner', owner_id=farm.owner_id) }}">Contact Owner</a>
+                            {% else %}
+                            <span>No Owner Info Available</span>
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <!-- Listings by Soil Types -->
+        <section>
+            <h2>View Listings by Soil Types</h2>
+            <ul>
+                {% for soil in soil_types %}
+                <li>
+                    Soil Type: {{ soil.type }}
+                    <ul>
+                        {% for listing in listings if listing.soil_id == soil.soil_id %}
+                        <li>
+                            Listing ID: {{ listing.listing_id }} | Price: ${{ listing.price }}
+                            {% if listing.user_id %}
+                            <a href="{{ url_for('views.contact_owner', owner_id=listing.user_id) }}">Contact Owner</a>
+                            {% else %}
+                            <span>No Owner Info Available</span>
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <!-- All Listings -->
+        <section>
+            <h2>All Listings</h2>
+            <ul>
+                {% for listing in listings %}
+                <li>
+                    Listing ID: {{ listing.listing_id }} | Soil ID: {{ listing.soil_id }} | Price: ${{ listing.price }}
+                    {% if listing.user_id %}
+                    <a href="{{ url_for('views.contact_owner', owner_id=listing.user_id) }}">Contact Owner</a>
+                    {% else %}
+                    <span>No Owner Info Available</span>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+</body>
+
+</html>
